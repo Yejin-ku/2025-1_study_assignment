@@ -50,7 +50,7 @@ namespace calculator
     public class Calculator
     {
         // ---------- TODO ----------
-        
+        public double Calculate(double num1, string op, double num2);
         // --------------------
     }
 }
