@@ -50,7 +50,51 @@ namespace calculator
     public class Calculator
     {
         // ---------- TODO ----------
-        public double Calculate(double num1, string op, double num2);
+        public double Calculate(double num1, string op, double num2)
+     {
+        switch (op)
+        {
+            case "+":
+                return num1 + num2;
+            case "-":
+                return num1 - num2;
+            case "*":
+                return num1 * num2;
+            case "/":
+                return num1 / num2;
+            case "**":
+                return Math.Pow(num1, num2);
+            case "%":
+                return num1 % num2;
+            case "G": // GCD
+                {
+                    int a = (int)num1;
+                    int b = (int)num2;
+                    while (b != 0)
+                    {
+                        int temp = b;
+                        b = a % b;
+                        a = temp;
+                    }
+                    return a;
+                }
+            case "L": // LCM
+                {
+                    int a = (int)num1;
+                    int b = (int)num2;
+                    if (a == 0 || b == 0) return 0;
+                    int A = a, B = b;
+                    while (b != 0)
+                    {
+                        int temp = b;
+                        b = a % b;
+                        a = temp;
+                    }
+                    int gcd = a;
+                    return (A * B) / gcd;
+                }
+        }
+     }
         // --------------------
     }
 }
