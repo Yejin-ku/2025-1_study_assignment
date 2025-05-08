@@ -20,7 +20,71 @@ namespace statistics
 
             int stdCount = data.GetLength(0) - 1;
             // ---------- TODO ----------
-            
+            string[] subjects = { "Math", "Science", "English" };
+
+            int[] sum = new int[3];
+            int[] max = new int[3];
+            int[] min = new int[3];
+
+            for (int i = 0; i < 3; i++)
+            {
+                max[i] = 0;
+                min[i] = 100;
+            }
+
+            string[] names = new string[stdCount];
+            int[] totals = new int[stdCount];
+
+            for (int i = 1; i <= stdCount; i++)
+            {
+                names[i - 1] = data[i, 1];
+                int total = 0;
+
+                for (int j = 0; j < 3; j++)
+                {
+                    int score = int.Parse(data[i, j + 2]);
+                    sum[j] += score;
+
+                    if (score > max[j]) max[j] = score;
+                    if (score < min[j]) min[j] = score;
+
+                    total += score;
+                }
+
+                totals[i - 1] = total;
+            }
+
+            Console.WriteLine("Average Scores: ");
+            for (int j = 0; j < 3; j++)
+            {
+                double avg = sum[j] / (double)stdCount;
+                Console.WriteLine(subjects[j] + ": " + avg.ToString("F2"));
+            }
+
+            Console.WriteLine("\nMax and min Scores: ");
+            for (int j = 0; j < 3; j++)
+            {
+                Console.WriteLine(subjects[j] + ": (" + max[j] + ", " + min[j] + ")");
+            }
+
+            Console.WriteLine("\nStudents rank by total scores:");
+
+            string[] suffixes = { "1st", "2nd", "3rd", "4th", "5th" };
+
+            for (int i = 0; i < stdCount; i++)
+            {
+                int rank = 1;
+                for (int j = 0; j < stdCount; j++)
+                {
+                    if (totals[j] > totals[i])
+                    {
+                        rank++;
+                    }
+                }
+
+                Console.WriteLine(names[i] + ": " + suffixes[rank - 1]);
+            }
+
             // --------------------
         }
     }
