@@ -69,7 +69,7 @@ namespace statistics
 
             Console.WriteLine("\nStudents rank by total scores:");
 
-            string[] suffixes = { "1st", "2nd", "3rd", "4th", "5th" };
+            string[] ranking = { "1st", "2nd", "3rd", "4th", "5th" };
 
             for (int i = 0; i < stdCount; i++)
             {
@@ -82,7 +82,7 @@ namespace statistics
                     }
                 }
 
-                Console.WriteLine(names[i] + ": " + suffixes[rank - 1]);
+                Console.WriteLine(names[i] + ": " + ranking[rank - 1]);
             }
 
             // --------------------
